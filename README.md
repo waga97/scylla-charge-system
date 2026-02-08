@@ -2,6 +2,8 @@
 
 A single-page charge recording system for Supersharkz Swim School. Admins can create, view, edit, and delete student charge records — all from one screen.
 
+Live Demo: [https://scylla-charge.arshad.quest](https://scylla-charge.arshad.quest)
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
