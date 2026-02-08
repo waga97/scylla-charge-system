@@ -1,18 +1,21 @@
 import type { Charge, ChargeCreateInput, ChargeUpdateInput } from '../types';
 import { STUB_CHARGES } from './data';
-import { generateChargeId } from '../utils/idGenerator';
+import { generateChargeId, initIdCounter } from '../utils/idGenerator';
 
 const STORAGE_KEY = 'supersharkz_charges';
-const SIMULATED_DELAY_MS = 300;
+const SIMULATED_DELAY_MS = 750;
 
 function loadCharges(): Charge[] {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [...STUB_CHARGES];
+    return stored ? (JSON.parse(stored) as Charge[]) : [...STUB_CHARGES];
   } catch {
     return [...STUB_CHARGES];
   }
 }
+
+// Sync ID counter with persisted data on module load
+initIdCounter(loadCharges().map((c) => c.charge_id));
 
 function saveCharges(charges: Charge[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(charges));

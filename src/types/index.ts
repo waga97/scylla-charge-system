@@ -19,3 +19,18 @@ export interface Notification {
   message: string;
   type: 'success' | 'error';
 }
+
+export type SortField =
+  | 'charge_id'
+  | 'student_id'
+  | 'charge_amount'
+  | 'paid_amount'
+  | 'date_charged'
+  | 'outstanding';
+
+export type SortDirection = 'asc' | 'desc';
+
+export interface SortConfig {
+  field: SortField;
+  direction: SortDirection;
+}
